@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container-fluid">
+    <div class="text-center">
+        <h1 class="display-4">Call PhonebookAPI from Jquery</h1>
+        <br /><br /><br />
+        <h3>jQuery Frontend application performing CRUD operation to an ASP.Net Core WebAPI</h3>
+        <hr />
+        <br />
+        <br />
+        <br />
+        <div class="btn-view">
+            <a class="btn btn-xs btn-outline-success float-md-left rounded-pill" asp-action="CreateNewPhonebook" asp-controller="Home"><i class="fa fa-clipboard-list" aria-hidden="true"></i>&nbsp;&nbsp;Add new Phonebook data</a>
+        </div>
+        <div class="btn-view-new-entry">
+            <a class="btn btn-xs btn-outline-success float-md-left rounded-pill" asp-action="CreateNewEntry" asp-controller="Home"><i class="fa fa-clipboard-list" aria-hidden="true"></i>&nbsp;&nbsp;Add new Entry data</a>
+        </div>
+        <div class="btn-view-list">
+            <a class="btn btn-xs btn-outline-success float-md-left rounded-pill" asp-action="ViewAllData" asp-controller="Home"><i class="fa fa-clipboard-list" aria-hidden="true"></i>&nbsp;&nbsp;View data</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @*<script src="~/script/Phonebook.js"></script>*@
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //alert("Works plus plus yes !!!");
+
+        })
+
+
+
+    </script>

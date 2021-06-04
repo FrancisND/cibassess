@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Create New Phonebook";
+}
+
+<h1>Create New Phonebook info</h1>
+
+
+<br />
+<br />
+<form>
+    <div class="form-group">
+        <label for="labeltextInputName">Name</label>
+        <input type="text" class="form-control col-md-3" id="txtName" placeholder="Enter Name" />
+    </div>
+    <br />
+    <button id="btnAddNew" class="btn btn-primary">Save</button>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnAddNew").click(function () {
+
+            var userInput = $("#txtName").val();
+
+            fetch("https://localhost:44389/api/phonebooks", {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: userInput })
+            }).then(res => res.json())
+                .then(res => console.log(res));
+        });
+
+    });
+
+</script>

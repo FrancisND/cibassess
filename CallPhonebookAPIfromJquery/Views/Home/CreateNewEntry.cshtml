@@ -1,0 +1,80 @@
+﻿
+
+@{
+    ViewData["Title"] = "Create New Entry";
+}
+
+<h1>Create New Entry info</h1>
+
+
+<br />
+<br />
+<form>
+    <div class="form-group">
+        <label for="labeltextInputName">Name</label>
+        <input type="text" class="form-control col-md-3" id="txtName" />
+    </div>
+    <div class="form-group">
+        <label for="labeltextInputPhoneNumber">Phone number</label>
+        <input type="text" maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" class="form-control col-md-3" id="txtPhoneNumber" />
+    </div>
+
+    <div class="form-group">
+        <label for="labeltextInputPhonebookId">Select a Phonebook Name</label>
+        <select id="select-phonebook-name-list" class="form-control form-select form-select-lg col-md-3" aria-label=".form-select-lg example">
+        </select>
+    </div>
+
+    <br />
+    <button id="btnAddNew" class="btn btn-primary">Save</button>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="~/script/Phonebook.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        sendData();
+
+        function sendData() {
+
+            $("#btnAddNew").click(function () {
+
+                var dataName = $('#txtName').val();
+                var dataPhoneNumber = $('#txtPhoneNumber').val();
+                var dataPhonebookId = $('#select-phonebook-name-list').find(":selected").val();
+                //var dataPhonebookId = 3;
+                console.log(dataPhonebookId);
+
+                var dataPhonebookIdParsed = parseInt(dataPhonebookId);
+
+                //alert(dataName + " : " + dataPhoneNumber + " : " + dataPhonebookId);
+
+                const data = { name: dataName, phoneNumber: dataPhoneNumber, phonebookId: dataPhonebookIdParsed };
+
+                fetch("https://localhost:44389/api/entries", {
+                    method: 'post',
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data),
+                }).then(res => res.json())
+                    .then(data => {
+                        console.log('Success YES :', data);
+                        //alert('Success:', data.name + data.phoneNumber + data.phonebookId);
+                    })
+                    .catch((error) => {
+                        console.error('Error NO :', error.message);
+                        //alert('Error:', error.message);
+                    });
+            });
+
+        }
+
+    });
+
+</script>
