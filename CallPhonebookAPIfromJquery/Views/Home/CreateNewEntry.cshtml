@@ -36,7 +36,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-
         sendData();
 
         function sendData() {
@@ -46,12 +45,7 @@
                 var dataName = $('#txtName').val();
                 var dataPhoneNumber = $('#txtPhoneNumber').val();
                 var dataPhonebookId = $('#select-phonebook-name-list').find(":selected").val();
-                //var dataPhonebookId = 3;
-                console.log(dataPhonebookId);
-
                 var dataPhonebookIdParsed = parseInt(dataPhonebookId);
-
-                //alert(dataName + " : " + dataPhoneNumber + " : " + dataPhonebookId);
 
                 const data = { name: dataName, phoneNumber: dataPhoneNumber, phonebookId: dataPhonebookIdParsed };
 
@@ -64,17 +58,14 @@
                     body: JSON.stringify(data),
                 }).then(res => res.json())
                     .then(data => {
-                        console.log('Success YES :', data);
-                        //alert('Success:', data.name + data.phoneNumber + data.phonebookId);
+                        console.log('Success', data);
                     })
                     .catch((error) => {
-                        console.error('Error NO :', error.message);
-                        //alert('Error:', error.message);
+                        console.error('Error', error.message);
+
                     });
             });
-
         }
-
     });
 
 </script>
